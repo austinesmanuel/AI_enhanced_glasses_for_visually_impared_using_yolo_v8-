@@ -1,5 +1,67 @@
 # AI_enhanced_glasses_for_visually_impared_using_yolo_v8-
-This is a project which shocase the software side for Ai featured glasses for visually imapred which has few fetaures lie path navigation, object detection, image description (sceanary description), and extract text from image (optical charecter recognition)
+This is a project which shocase the software side for Ai featured glasses for visually imapred which has few fetaures lie path navigation, object detection, image description (sceanary description), and extract text from image (optical charecter recognition).
+Here’s the updated prerequisites section with the additional information about the Picamera2 installation issues:
+
+---
+
+## Prerequisites
+
+Before running the scripts, ensure that you have the required hardware and software set up. This section details the necessary hardware components and the installation of required Python libraries.
+
+### Hardware Requirements
+
+- **Raspberry Pi**:
+  - Model: Raspberry Pi 3 or 4
+
+- **For `distance.py`**:
+  - **Ultrasonic Sensor**:
+    - Model: HC-SR04 or similar
+    - Components: TRIG Pin, ECHO Pin
+  - **Resistors**:
+    - 1k ohm and 2k ohm resistors (for voltage division and protection)
+  - **Jumper Wires**: For connecting the sensor to GPIO pins
+  - **Breadboard** (optional): For easy connections
+  - **Connection Guide**:
+    - For detailed wiring instructions, refer to this video: [Ultrasonic Sensor Connection](https://youtu.be/L90WS-ptnvI?feature=shared)
+
+- **For `main.py`**:
+  - **PiCamera2**:
+    - Model: Official Raspberry Pi Camera Module V2 or compatible
+  - **Microphone**:
+    - Model: USB microphone or compatible with Raspberry Pi
+  - **Speaker**: Any compatible speaker connected to the Raspberry Pi
+
+### Software Installation
+
+Ensure your Raspberry Pi OS is up to date and install the required Python libraries using the following commands:
+
+```bash
+# Update and install pip
+sudo apt-get update
+sudo apt-get install python3-pip
+
+# Install Python libraries
+sudo pip3 install pyttsx3
+sudo pip3 install speech_recognition
+sudo pip3 install RPi.GPIO
+sudo pip3 install opencv-python-headless
+sudo pip3 install pytesseract
+sudo pip3 install transformers
+sudo pip3 install torch
+sudo pip3 install pillow
+
+# Install Picamera2 for camera functionality
+sudo apt-get install python3-picamera2
+```
+
+If you encounter issues installing Picamera2, you can refer to the following resources for troubleshooting:
+- [Raspberry Pi Forum - Picamera2 Installation Issues](https://forums.raspberrypi.com/viewtopic.php?t=367558)
+- [Picamera2 on PyPI](https://pypi.org/project/picamera2/)
+
+Ensure all hardware components are correctly connected according to the guide and the resistors are properly installed before running the scripts.
+
+---
+
 Here is a breakdown of all the used python files 
 ## 1. `main.py`
 
@@ -280,6 +342,3 @@ Includes error handling to manage issues such as loading the image or performing
    - **`--psm 3`**: Page segmentation mode. Fully automatic page segmentation, but no OSD (Orientation and Script Detection).
 
    - **`--oem 3`**: OCR Engine mode. Uses both standard and LSTM OCR engines.
-
-
-```
