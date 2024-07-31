@@ -35,9 +35,55 @@ The `main.py` script acts as the central controller for the project. It handles 
 
  - **Error Handling**: Handles invalid user input and exceptions, including file operations such as deleting existing images.
 
+### Hardware and Configuration Details
+
+#### Hardware
+
+1. **Raspberry Pi**:
+   - **Model**: Any Raspberry Pi model compatible with the PiCamera2 library (e.g., Raspberry Pi 4).
+   - **Purpose**: Acts as the central controller for capturing images and executing various tasks.
+
+2. **PiCamera2**:
+   - **Model**: Official Raspberry Pi Camera Module V2 or any compatible PiCamera2.
+   - **Resolution**: Configurable (e.g., 1920x1080 for high resolution).
+
+3. **Microphone**:
+   - **Model**: USB microphone or compatible microphone with Raspberry Pi.
+   - **Purpose**: Captures user voice input for speech recognition.
+
+4. **Speaker**:
+   - **Model**: Any compatible speaker connected to the Raspberry Pi.
+   - **Purpose**: Outputs text-to-speech responses.
+
+#### Camera Configuration
+
+- **Resolution**:
+  - **Main Resolution**: 1920x1080 (Full HD).
+  - **Lo-Res Preview**: 640x480 (used for preview and focusing).
+
+- **Camera Settings**:
+  - **Exposure Time**: Configurable (e.g., 32680 ms).
+  - **Analogue Gain**: Adjustable (e.g., 3.9).
+  - **Autofocus Mode**: Continuous.
+  - **Autofocus Speed**: Fast.
+
+#### Setup
+
+1. **Camera Connection**:
+   - **Connection**: Ensure the PiCamera2 is properly connected to the Raspberry Pi via the camera interface.
+
+2. **Microphone Setup**:
+   - **Connection**: Connect the microphone to a USB port or the appropriate audio interface.
+   - **Configuration**: Select and configure the microphone in the `listen` function.
+
+3. **Speaker Setup**:
+   - **Connection**: Connect the speaker to the audio output of the Raspberry Pi.
+
+4. **Software Configuration**:
+   - **Python Libraries**: `pyttsx3` for text-to-speech, `speech_recognition` for voice commands, `Picamera2` for image capture.
+   - **Python Version**: Ensure compatibility with the installed version of Python.
 
 ---
-
 
 ## 2. `image_captioning_final.py`
 
@@ -158,6 +204,43 @@ The `distance.py` script measures the distance to objects using an ultrasonic se
 
 Includes handling for user interruptions (e.g., Ctrl+C) and ensures proper GPIO cleanup to prevent leaving GPIO pins in an unstable state.
 
+### Hardware and Configuration Details
+#### Hardware
+
+1. **Raspberry Pi**:
+   - **Model**: Any Raspberry Pi model with GPIO pins (e.g., Raspberry Pi 3, Raspberry Pi 4).
+   - **Purpose**: Acts as the central controller for measuring distance using the ultrasonic sensor.
+
+2. **Ultrasonic Sensor**:
+   - **Model**: HC-SR04 or similar ultrasonic distance sensor.
+   - **Components**:
+     - **TRIG Pin**: Trigger pin to initiate the measurement.
+     - **ECHO Pin**: Echo pin to receive the reflected signal.
+
+3. **Jumper Wires**:
+   - **Purpose**: Connects the ultrasonic sensor to the GPIO pins on the Raspberry Pi.
+
+4. **Breadboard** (optional):
+   - **Purpose**: Provides a platform to connect the sensor and wires without soldering.
+
+#### GPIO Pin Configuration
+
+- **TRIG Pin (GPIO 23)**: 
+  - **Function**: Sends a short pulse to trigger the ultrasonic sensor to emit sound waves.
+  - **Connection**: Connect to the TRIG pin of the ultrasonic sensor.
+
+- **ECHO Pin (GPIO 24)**:
+  - **Function**: Receives the pulse from the ultrasonic sensor after reflecting off an object.
+  - **Connection**: Connect to the ECHO pin of the ultrasonic sensor.
+
+#### Setup
+
+1. **Raspberry Pi GPIO**: 
+   - Ensure GPIO pins are properly configured and connected to the ultrasonic sensor.
+
+2. **Software Configuration**:
+   - **Python Libraries**: `RPi.GPIO` for GPIO control.
+   - **Python Version**: Ensure compatibility with the installed version of Python.
 
 ---
 
